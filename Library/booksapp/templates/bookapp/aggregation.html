@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggregation</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          width: 50%;
+        }
+        td, tr, th{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aggregation</h1>
+     <table>
+        <tr>
+            <th>Total Books</th>
+            <td> {{count}}</td>
+        </tr>
+        <tr>
+            <th>Average Price of All Book</th>
+            <td>{{average}}</td>
+        </tr>
+        <tr>
+            <th>Oldest Book</th>
+            <td>{{oldest.title}}({{oldest.publication_year}})</td>
+        </tr>
+        <tr>
+            <th>Newest Book</th>
+            <td>{{newest.title}}({{newest.publication_year}})</td> 
+        </tr>
+        <tr>
+            <th>Count Per Year</th>
+            {% for bk in countyear %}
+            <td>
+                {{bk.publication_year}} ({{count}})   
+            </td>
+            {% endfor %}
+        </tr>
+     </table>
+    <a href="{% url 'dashboard' %}">DashBoard</a>
+</body>
+</html>

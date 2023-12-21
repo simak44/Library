@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          width: 50%;
+        }
+        td, tr, th{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>LIBRARY</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publication Year</th>
+            <th>ISBN</th>
+            <th>Price</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        {% for b in book %}
+        <tr>
+             <td>{{b.id}}</td>
+             <td>{{b.title}}</td>
+             <td>{{b.author}}</td>
+             <td>{{b.publication_year}}</td>
+             <td>{{b.isbn}}</td>
+             <td>{{b.price}}</td>
+             <td><form action="{% url 'delete' b.id %}" method="post">{% csrf_token %}
+                <input type="submit" value="Delete"></form></td> 
+             <td><a href="{% url 'update' b.id %}"> Eidt</a></td>
+        </tr>
+        {% endfor %}<br><br>
+        
+    </table> <br><br>
+        <h1>Authors</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        {% for a in author %}
+        <tr>
+            <td>{{a.id}}</td>
+            <td>{{a.first_name}}</td>
+            <td>{{a.last_name}}</td>
+            <td>{{a.address}}</td>
+            <td><form action="{% url 'adelete' a.id %}" method="post">{% csrf_token %}
+                <input type="submit" value="Delete"></form></td> 
+            <td><a href="{% url 'aupdate' a.id %}"> Eidt</a></td>
+        </tr>
+        {% endfor %}
+
+    </table><br>
+  <a href="{% url 'addbook' %}"> Add Book</a><br><br>
+  <a href="{% url 'author' %}"> Add Author</a><br><br>
+  <a href="{% url 'aggregation' %}"> Aggregation</a>
+</body>
+</html>

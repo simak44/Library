@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Registration</title>
+</head>
+<body>
+    <h1>ADD AUTHOR </h1>
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Register">
+
+    </form> <br>
+     <a href="{% url 'addbook' %}"> Add Book</a><br>
+     <a href="{% url 'dashboard' %}"> DashBoard</a><br>
+     <a href="{% url 'aggregation' %}"> Aggregation</a>
+
+    
+</body>
+</html>
